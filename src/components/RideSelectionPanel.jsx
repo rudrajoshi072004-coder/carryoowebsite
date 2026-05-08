@@ -32,20 +32,20 @@ export function RideSelectionPanel({
           <motion.div
             role="dialog"
             aria-modal="true"
-            className="fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] overflow-y-auto rounded-t-[2rem] border border-white/15 bg-[#070b14]/95 shadow-[0_-30px_80px_rgba(0,0,0,0.65)] backdrop-blur-2xl sm:inset-auto sm:right-6 sm:top-24 sm:max-h-[calc(100vh-7rem)] sm:w-[440px] sm:rounded-[2rem]"
+            className="fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] overflow-y-auto rounded-t-[2rem] border border-slate-200 bg-white shadow-[0_-30px_80px_rgba(0,0,0,0.1)] backdrop-blur-2xl sm:inset-auto sm:right-6 sm:top-24 sm:max-h-[calc(100vh-7rem)] sm:w-[440px] sm:rounded-[2rem]"
             initial={{ y: '100%', opacity: 0.6 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: '100%', opacity: 0 }}
             transition={{ type: 'spring', damping: 28, stiffness: 320 }}
           >
-            <div className="sticky top-0 flex items-center justify-between border-b border-white/10 bg-[#070b14]/90 px-5 py-4 backdrop-blur-xl">
+            <div className="sticky top-0 flex items-center justify-between border-b border-slate-100 bg-white/90 px-5 py-4 backdrop-blur-xl">
               <div>
-                <p className="font-display text-base font-bold text-white">Ride selection</p>
-                <p className="text-xs text-slate-400">Choose tier + vehicle · dummy pricing engine</p>
+                <p className="font-display text-base font-bold text-slate-900">Ride selection</p>
+                <p className="text-xs text-slate-500">Choose tier + vehicle · dummy pricing engine</p>
               </div>
               <button
                 type="button"
-                className="rounded-full border border-white/15 px-3 py-1.5 text-xs font-semibold text-slate-200 hover:bg-white/10"
+                className="rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-50"
                 onClick={onClose}
               >
                 Close
@@ -67,33 +67,33 @@ export function RideSelectionPanel({
                         onClick={() => onPickTier(t.id)}
                         className={`group relative overflow-hidden rounded-2xl border px-4 py-3 text-left transition ${
                           selected
-                            ? 'border-cyan-400/50 bg-gradient-to-br from-cyan-500/15 to-transparent shadow-[0_0_40px_rgba(34,211,238,0.12)]'
-                            : 'border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10'
+                            ? 'border-blue-500/50 bg-blue-50 shadow-[0_0_40px_rgba(0,102,255,0.05)]'
+                            : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50'
                         }`}
                       >
                         <div className="flex items-start justify-between gap-3">
                           <div>
-                            <p className="flex items-center gap-2 font-semibold text-white">
+                            <p className="flex items-center gap-2 font-semibold text-slate-900">
                               {t.name}
                               {t.badge && (
-                                <span className="rounded-full bg-orange-400/15 px-2 py-0.5 text-[10px] font-bold text-orange-200">
+                                <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-bold text-blue-700">
                                   {t.badge}
                                 </span>
                               )}
                             </p>
-                            <p className="mt-1 text-xs text-slate-400">{t.subtitle}</p>
+                            <p className="mt-1 text-xs text-slate-500">{t.subtitle}</p>
                           </div>
-                          <span className="text-xs font-semibold text-cyan-200">
+                          <span className="text-xs font-semibold text-blue-600">
                             ×{t.multiplier.toFixed(2)}
                           </span>
                         </div>
                         <motion.span
-                          className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 ring-2 ring-cyan-400/0 transition group-hover:opacity-100"
+                          className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 ring-2 ring-blue-500/0 transition group-hover:opacity-100"
                           animate={
                             selected
                               ? {
                                   opacity: 1,
-                                  boxShadow: '0 0 0 1px rgba(34,211,238,0.35)',
+                                  boxShadow: '0 0 0 1px rgba(0,102,255,0.2)',
                                 }
                               : {}
                           }
@@ -120,31 +120,31 @@ export function RideSelectionPanel({
                         onClick={() => onPickVehicle(v.id)}
                         className={`flex gap-3 rounded-2xl border p-3 text-left transition ${
                           selected
-                            ? 'border-orange-400/45 bg-gradient-to-r from-orange-500/15 to-transparent'
-                            : 'border-white/10 bg-white/[0.04] hover:border-white/18'
+                            ? 'border-blue-400/45 bg-blue-50'
+                            : 'border-slate-200 bg-white hover:border-slate-300'
                         }`}
                       >
                         <div
-                          className={`relative h-16 w-24 shrink-0 overflow-hidden rounded-xl bg-gradient-to-br ${v.tint}`}
+                          className={`relative h-16 w-24 shrink-0 overflow-hidden rounded-xl bg-slate-100`}
                         >
                           <img
                             src={v.image}
                             alt=""
-                            className="h-full w-full object-cover opacity-90 mix-blend-luminosity"
+                            className="h-full w-full object-cover"
                             loading="lazy"
                           />
-                          <span className="absolute left-2 top-2 rounded-md bg-black/50 px-1.5 py-0.5 text-[9px] font-bold text-white">
+                          <span className="absolute left-2 top-2 rounded-md bg-white/90 px-1.5 py-0.5 text-[9px] font-bold text-slate-900 shadow-sm">
                             {v.capacityKg} kg
                           </span>
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="truncate font-semibold text-white">{v.name}</p>
-                          <p className="truncate text-xs text-slate-400">{v.tagline}</p>
+                          <p className="truncate font-semibold text-slate-900">{v.name}</p>
+                          <p className="truncate text-xs text-slate-500">{v.tagline}</p>
                           <div className="mt-2 flex flex-wrap gap-2 text-[11px]">
-                            <span className="rounded-full bg-white/10 px-2 py-0.5 font-semibold text-slate-100">
+                            <span className="rounded-full bg-blue-600 px-2 py-0.5 font-semibold text-white">
                               {formatInr(previewFare.total)}
                             </span>
-                            <span className="rounded-full border border-white/10 px-2 py-0.5 text-slate-300">
+                            <span className="rounded-full border border-slate-200 px-2 py-0.5 text-slate-500">
                               ETA {previewEta} min
                             </span>
                           </div>
@@ -155,23 +155,23 @@ export function RideSelectionPanel({
                 </div>
               </section>
 
-              <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/80 to-slate-950/80 p-4">
+              <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
                 <div className="flex items-center justify-between gap-3">
                   <div>
-                    <p className="text-xs text-slate-400">Estimated total</p>
-                    <p className="font-display text-2xl font-bold text-white">
+                    <p className="text-xs text-slate-500">Estimated total</p>
+                    <p className="font-display text-2xl font-bold text-slate-900">
                       {formatInr(fare.total)}
                     </p>
-                    <p className="mt-1 text-[11px] text-slate-500">
+                    <p className="mt-1 text-[11px] text-slate-600">
                       Base {formatInr(fare.base)} · includes {Math.round(distanceKm)} km run
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-xs text-slate-400">Pickup window</p>
-                    <p className="text-lg font-bold text-cyan-200">{eta} min</p>
+                    <p className="text-xs text-slate-500">Pickup window</p>
+                    <p className="text-lg font-bold text-blue-600">{eta} min</p>
                   </div>
                 </div>
-                <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+                <div className="mt-4 h-px w-full bg-slate-200" />
                 <p className="mt-3 text-[11px] leading-relaxed text-slate-500">
                   Estimates adjust for simulated demand — not a binding quote.
                 </p>

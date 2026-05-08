@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 const items = [
   {
     quote:
-      'Carrio cut our intra-city replenishment time in half. Feels like enterprise ops with consumer-grade UX.',
+      'carrioo cut our intra-city replenishment time in half. Feels like enterprise ops with consumer-grade UX.',
     name: 'Aditi Rao',
     role: 'Ops Director, Bloom Retail',
   },

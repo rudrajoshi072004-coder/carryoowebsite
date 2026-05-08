@@ -33,25 +33,25 @@ export function Home() {
   const { pickup, drop, setPickup, setDrop } = useBookingDraft()
 
   return (
-    <div className="pb-28">
+    <div className="pb-28 bg-slate-50">
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(700px_420px_at_70%_10%,rgba(249,115,22,0.18),transparent_60%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(700px_420px_at_70%_10%,rgba(0,102,255,0.05),transparent_60%)]" />
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45 }}
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-300"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.8)]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-600 shadow-[0_0_12px_rgba(0,102,255,0.4)]" />
               City-scale logistics
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05, duration: 0.5 }}
-              className="mt-6 font-display text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl lg:text-6xl"
+              className="mt-6 font-display text-4xl font-extrabold leading-[1.05] text-slate-900 sm:text-5xl lg:text-6xl"
             >
               Move anything, <span className="text-gradient">anytime</span>
             </motion.h1>
@@ -59,9 +59,9 @@ export function Home() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.5 }}
-              className="mt-5 max-w-xl text-base leading-relaxed text-slate-400 sm:text-lg"
+              className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg"
             >
-              Carrio pairs you with verified truck partners, transparent pricing, and a mobile
+              carrioo pairs you with verified truck partners, transparent pricing, and a mobile
               experience that feels as polished as the brands you already love.
             </motion.p>
             <motion.div
@@ -72,13 +72,13 @@ export function Home() {
             >
               <Link
                 to="/book"
-                className="rounded-full bg-gradient-to-r from-orange-400 via-rose-500 to-fuchsia-500 px-6 py-3 text-sm font-bold text-slate-950 shadow-xl shadow-orange-500/25"
+                className="rounded-full bg-accent px-6 py-3 text-sm font-bold text-white shadow-xl shadow-blue-500/25"
               >
                 Book now
               </Link>
               <a
                 href="#download"
-                className="rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur hover:bg-white/10"
+                className="rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 backdrop-blur hover:bg-slate-50"
               >
                 Download app
               </a>
@@ -99,7 +99,7 @@ export function Home() {
                   <input
                     value={pickup}
                     onChange={(e) => setPickup(e.target.value)}
-                    className="mt-1.5 w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-cyan-400/40"
+                    className="mt-1.5 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-blue-500/40"
                     placeholder="Enter pickup area"
                   />
                 </label>
@@ -108,7 +108,7 @@ export function Home() {
                   <input
                     value={drop}
                     onChange={(e) => setDrop(e.target.value)}
-                    className="mt-1.5 w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-orange-400/40"
+                    className="mt-1.5 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-blue-500/40"
                     placeholder="Where should we arrive?"
                   />
                 </label>
@@ -116,13 +116,13 @@ export function Home() {
               <div className="mt-4 flex flex-wrap gap-2">
                 <Link
                   to="/book"
-                  className="flex-1 rounded-2xl bg-gradient-to-r from-cyan-400 to-sky-500 py-3 text-center text-sm font-bold text-slate-950"
+                  className="flex-1 rounded-2xl bg-accent py-3 text-center text-sm font-bold text-white"
                 >
                   Open booking flow
                 </Link>
                 <Link
                   to="/app"
-                  className="rounded-2xl border border-white/15 px-4 py-3 text-sm font-semibold text-slate-100 hover:bg-white/5"
+                  className="rounded-2xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
                 >
                   Preview app
                 </Link>
@@ -150,15 +150,15 @@ export function Home() {
               viewport={{ once: true, margin: '-10%' }}
               transition={{ delay: idx * 0.06, duration: 0.4 }}
               whileHover={{ y: -4 }}
-              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-lg shadow-black/30"
+              className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
             >
               <div
-                className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${f.accent} opacity-0 transition group-hover:opacity-100`}
+                className={`pointer-events-none absolute inset-0 bg-blue-50 opacity-0 transition group-hover:opacity-100`}
               />
               <div className="relative">
-                <h3 className="font-display text-lg font-bold text-white">{f.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-400">{f.body}</p>
-                <div className="mt-5 h-px w-12 bg-gradient-to-r from-cyan-400 to-orange-400 opacity-60" />
+                <h3 className="font-display text-lg font-bold text-slate-900">{f.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{f.body}</p>
+                <div className="mt-5 h-px w-12 bg-blue-600 opacity-60" />
               </div>
             </motion.article>
           ))}
@@ -168,17 +168,17 @@ export function Home() {
       <section className="mx-auto mt-20 max-w-6xl px-4 sm:px-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300/90">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600/90">
               Fleet gallery
             </p>
-            <h2 className="mt-2 font-display text-3xl font-bold text-white sm:text-4xl">
+            <h2 className="mt-2 font-display text-3xl font-bold text-slate-900 sm:text-4xl">
               Pick the right metal for the job
             </h2>
-            <p className="mt-2 max-w-xl text-slate-400">
+            <p className="mt-2 max-w-xl text-slate-600">
               Swipe through capacity classes — every card shows real photography and load bands.
             </p>
           </div>
-          <Link to="/book" className="text-sm font-semibold text-orange-300 hover:text-orange-200">
+          <Link to="/book" className="text-sm font-semibold text-blue-600 hover:text-blue-700">
             Configure a run →
           </Link>
         </div>
@@ -191,13 +191,13 @@ export function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05 }}
-              className="relative w-[260px] shrink-0 snap-start overflow-hidden rounded-[1.75rem] border border-white/10 bg-slate-950/60 shadow-xl"
+              className="relative w-[260px] shrink-0 snap-start overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-sm"
             >
-              <div className={`h-36 bg-gradient-to-br ${v.tint}`}>
+              <div className={`h-36 bg-slate-100`}>
                 <img src={v.image} alt="" className="h-full w-full object-cover" loading="lazy" />
               </div>
               <div className="p-5">
-                <p className="font-display text-lg font-bold text-white">{v.name}</p>
+                <p className="font-display text-lg font-bold text-slate-900">{v.name}</p>
                 <p className="mt-1 text-xs text-slate-400">{v.tagline}</p>
                 <div className="mt-4 flex items-center justify-between text-xs font-semibold">
                   <span className="rounded-full bg-white/10 px-2 py-1 text-slate-100">

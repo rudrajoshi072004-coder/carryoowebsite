@@ -44,7 +44,7 @@ export function About() {
       <div className="max-w-3xl">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-300/90">Trust</p>
         <h1 className="mt-3 font-display text-4xl font-extrabold text-white sm:text-5xl">
-          Why teams stake their lanes on Carrio
+          Why teams stake their lanes on carrioo
         </h1>
         <p className="mt-4 text-lg text-slate-400">
           Transparent operations, obsessive about the last mile handshake. This page is narrative —

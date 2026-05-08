@@ -46,24 +46,24 @@ export function Booking() {
   }, [matchStage])
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 bg-slate-50">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300/90">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
             Booking Desk
           </p>
-          <h1 className="mt-2 font-display text-3xl font-extrabold text-white sm:text-4xl">
+          <h1 className="mt-2 font-display text-3xl font-extrabold text-slate-900 sm:text-4xl">
             Plan a truck like you’re plotting a runway
           </h1>
-          <p className="mt-2 max-w-2xl text-slate-400">
+          <p className="mt-2 max-w-2xl text-slate-600">
             Google Maps-inspired surfaces (static demo), stacked steps, transparent math. Open the{' '}
-            <span className="text-orange-300">Ride selection panel</span> anytime to reshuffle tiers.
+            <span className="text-blue-600 font-semibold">Ride selection panel</span> anytime to reshuffle tiers.
           </p>
         </div>
         <button
           type="button"
           onClick={() => setPanelOpen(true)}
-          className="mt-4 inline-flex rounded-2xl border border-orange-400/40 bg-orange-400/15 px-4 py-2 text-sm font-bold text-orange-50 shadow-[0_0_40px_rgba(251,146,60,0.18)] sm:mt-0"
+          className="mt-4 inline-flex rounded-2xl border border-blue-200 bg-white px-4 py-2 text-sm font-bold text-blue-600 shadow-sm sm:mt-0 hover:bg-slate-50"
         >
           Ride selection panel
         </button>
@@ -80,10 +80,10 @@ export function Booking() {
               onClick={() => setStepIdx(idx)}
               className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
                 active
-                  ? 'bg-white text-slate-950'
+                  ? 'bg-accent text-white shadow-lg shadow-blue-500/20'
                   : done
-                    ? 'border border-emerald-400/30 bg-emerald-400/10 text-emerald-100'
-                    : 'border border-white/10 bg-white/5 text-slate-300 hover:bg-white/10'
+                    ? 'border border-emerald-200 bg-emerald-50 text-emerald-600'
+                    : 'border border-slate-200 bg-white text-slate-500 hover:bg-slate-50'
               }`}
             >
               {idx + 1}. {label}
@@ -94,15 +94,15 @@ export function Booking() {
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1.4fr_0.9fr]">
         <div className="space-y-6">
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950 shadow-2xl">
-            <div className="absolute inset-0 bg-[radial-gradient(800px_500px_at_20%_0%,rgba(56,189,248,0.15),transparent_55%)]" />
+          <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
+            <div className="absolute inset-0 bg-[radial-gradient(800px_500px_at_20%_0%,rgba(0,102,255,0.05),transparent_55%)]" />
             <div className="relative">
-              <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-                <div className="flex items-center gap-2 text-xs text-slate-400">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.7)]" />
+              <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
+                <div className="flex items-center gap-2 text-xs text-slate-500">
+                  <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.4)]" />
                   Map preview · demo canvas
                 </div>
-                <span className="rounded-full bg-white/5 px-3 py-1 text-[11px] font-semibold text-slate-200">
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold text-slate-600">
                   Sat · light traffic
                 </span>
               </div>
@@ -116,7 +116,7 @@ export function Booking() {
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900"
+                    className="absolute inset-0 bg-slate-50"
                   >
                     <svg className="absolute inset-0 h-full w-full opacity-40" xmlns="http://www.w3.org/2000/svg">
                       <defs>
@@ -124,14 +124,14 @@ export function Booking() {
                           <path
                             d="M48 0H0v48"
                             fill="none"
-                            stroke="rgba(148,163,184,0.12)"
+                            stroke="rgba(0,102,255,0.08)"
                             strokeWidth="1"
                           />
                         </pattern>
                         <linearGradient id="lane" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="rgba(34,211,238,0)" />
-                          <stop offset="40%" stopColor="rgba(34,211,238,0.45)" />
-                          <stop offset="100%" stopColor="rgba(249,115,22,0.35)" />
+                          <stop offset="0%" stopColor="rgba(0,102,255,0)" />
+                          <stop offset="40%" stopColor="rgba(0,102,255,0.45)" />
+                          <stop offset="100%" stopColor="rgba(0,102,255,0.35)" />
                         </linearGradient>
                       </defs>
                       <rect width="100%" height="100%" fill="url(#tiles)" />
@@ -153,10 +153,10 @@ export function Booking() {
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ delay: 0.3 }}
                     >
-                      <span className="grid h-10 w-10 place-items-center rounded-2xl border border-cyan-400/40 bg-cyan-500/20 text-xs font-bold text-cyan-50 shadow-lg shadow-cyan-500/25">
+                      <span className="grid h-10 w-10 place-items-center rounded-2xl border border-blue-200 bg-white text-xs font-bold text-blue-600 shadow-lg shadow-blue-500/10">
                         A
                       </span>
-                      <span className="rounded-full bg-black/40 px-2 py-0.5 text-[10px] text-slate-200 ring-1 ring-white/10">
+                      <span className="rounded-full bg-white/80 px-2 py-0.5 text-[10px] text-slate-600 ring-1 ring-slate-200 backdrop-blur-sm">
                         Pickup
                       </span>
                     </motion.div>
@@ -167,10 +167,10 @@ export function Booking() {
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ delay: 0.45 }}
                     >
-                      <span className="grid h-10 w-10 place-items-center rounded-2xl border border-orange-400/40 bg-orange-500/20 text-xs font-bold text-orange-50 shadow-lg shadow-orange-500/25">
+                      <span className="grid h-10 w-10 place-items-center rounded-2xl border border-blue-200 bg-white text-xs font-bold text-blue-600 shadow-lg shadow-blue-500/10">
                         B
                       </span>
-                      <span className="rounded-full bg-black/40 px-2 py-0.5 text-[10px] text-slate-200 ring-1 ring-white/10">
+                      <span className="rounded-full bg-white/80 px-2 py-0.5 text-[10px] text-slate-600 ring-1 ring-slate-200 backdrop-blur-sm">
                         Drop
                       </span>
                     </motion.div>
@@ -178,26 +178,26 @@ export function Booking() {
                 )}
               </div>
 
-              <div className="relative grid gap-3 border-t border-white/10 bg-black/40 p-5 sm:grid-cols-2">
-                <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+              <div className="relative grid gap-3 border-t border-slate-100 bg-white p-5 sm:grid-cols-2">
+                <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-500">
                   Pickup
                   <input
                     value={pickup}
                     onChange={(e) => setPickup(e.target.value)}
-                    className="mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none focus:border-cyan-400/40"
+                    className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-blue-500/40"
                     placeholder="Search or paste address"
                   />
                 </label>
-                <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-500">
                   Drop
                   <input
                     value={drop}
                     onChange={(e) => setDrop(e.target.value)}
-                    className="mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none focus:border-orange-400/40"
+                    className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-blue-500/40"
                     placeholder="Gate, dock, floor notes"
                   />
                 </label>
-                <label className="sm:col-span-2 block text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                <label className="sm:col-span-2 block text-[11px] font-semibold uppercase tracking-wider text-slate-500">
                   Approximate distance · {distanceKm} km
                   <input
                     type="range"
