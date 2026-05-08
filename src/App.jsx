@@ -1,0 +1,21 @@
+import { Route, Routes } from 'react-router-dom'
+import { Layout } from './components/Layout.jsx'
+import { Home } from './pages/Home.jsx'
+import { Booking } from './pages/Booking.jsx'
+import { AppShowcase } from './pages/AppShowcase.jsx'
+import { About } from './pages/About.jsx'
+import { Contact } from './pages/Contact.jsx'
+
+export default function App() {
+  return (
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/book" element={<Booking />} />
+        <Route path="/app" element={<AppShowcase />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Route>
+    </Routes>
+  )
+}
