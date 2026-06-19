@@ -2,7 +2,6 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Navbar } from './Navbar'
 import { Footer } from './Footer'
-import { FloatingBookingWidget } from './FloatingBookingWidget'
 
 const pageVariants = {
   initial: { opacity: 0, y: 10 },
@@ -12,7 +11,7 @@ const pageVariants = {
 
 export function Layout() {
   const { pathname } = useLocation()
-  const hideFloating = pathname.startsWith('/book')
+  const isHome = pathname === '/'
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -25,13 +24,12 @@ export function Layout() {
           animate="animate"
           exit="exit"
           transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-          className="flex-1"
+          className={`flex-1 ${isHome ? '' : 'pt-20'}`}
         >
           <Outlet />
         </motion.main>
       </AnimatePresence>
       <Footer />
-      {!hideFloating && <FloatingBookingWidget />}
     </div>
   )
 }

@@ -1,76 +1,95 @@
-import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Logo } from './Logo.jsx'
 
 const links = [
   { to: '/', label: 'Home' },
-  { to: '/book', label: 'Book' },
-  { to: '/app', label: 'App' },
-  { to: '/about', label: 'Trust' },
+  { to: '/about', label: 'About Us' },
+  { to: '/services', label: 'Services' },
+  { to: '/safety', label: 'Safety' },
   { to: '/contact', label: 'Support' },
 ]
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Transparent over the hero only on home (until scrolled).
+  const overlay = isHome && !scrolled
+  const light = overlay
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link to="/" className="group flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-2xl bg-accent text-sm font-extrabold text-white shadow-lg shadow-blue-500/20">
-            C
-          </span>
-          <div className="leading-tight">
-            <p className="font-display text-base font-bold tracking-tight text-slate-900 sm:text-lg">
-              carrioo
-            </p>
-            <p className="hidden text-[11px] text-slate-500 sm:block">City truck network</p>
-          </div>
+    <header
+      className={[
+        'fixed top-0 left-0 right-0 z-50 transition-colors duration-300',
+        overlay
+          ? 'bg-transparent'
+          : 'border-b border-white/10 bg-[#0a45c4]/95 backdrop-blur-xl shadow-lg shadow-blue-900/10',
+      ].join(' ')}
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-8">
+        <Link to="/" className="shrink-0">
+          <Logo light={light || !overlay} />
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-1 lg:flex">
           {links.map((l) => (
             <NavLink
-              key={l.to}
+              key={l.label}
               to={l.to}
+              end={l.to === '/'}
               className={({ isActive }) =>
                 [
-                  'rounded-full px-3 py-2 text-sm font-medium transition-colors',
-                  isActive ? 'bg-blue-50 text-blue-600' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900',
+                  'relative rounded-full px-4 py-2 text-sm font-semibold transition-colors',
+                  isActive ? 'text-white' : 'text-white/80 hover:text-white',
                 ].join(' ')
               }
             >
-              {l.label}
+              {({ isActive }) => (
+                <>
+                  {l.label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-cyan-300"
+                    />
+                  )}
+                </>
+              )}
             </NavLink>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 sm:flex">
-          <a
-            href="#download"
-            className="rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
-          >
-            Download
-          </a>
+        <div className="hidden items-center gap-3 lg:flex">
           <Link
-            to="/book"
-            className="rounded-full bg-accent px-4 py-2 text-sm font-bold text-white shadow-lg shadow-blue-500/25 transition hover:brightness-105"
+            to="/contact"
+            className="rounded-full bg-white px-6 py-2.5 text-sm font-bold text-[#0a45c4] shadow-lg shadow-blue-900/20 transition hover:bg-cyan-50"
           >
-            Book now
+            Become a Partner
           </Link>
         </div>
 
         <button
           type="button"
           aria-label="Open menu"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 backdrop-blur lg:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           <span className="sr-only">Menu</span>
           <div className="flex flex-col gap-1.5">
-            <span className={`h-0.5 w-5 rounded-full bg-slate-600 transition ${open ? 'translate-y-2 rotate-45' : ''}`} />
-            <span className={`h-0.5 w-5 rounded-full bg-slate-400 transition ${open ? 'opacity-0' : ''}`} />
-            <span className={`h-0.5 w-5 rounded-full bg-slate-600 transition ${open ? '-translate-y-2 -rotate-45' : ''}`} />
+            <span className={`h-0.5 w-5 rounded-full bg-white transition ${open ? 'translate-y-2 rotate-45' : ''}`} />
+            <span className={`h-0.5 w-5 rounded-full bg-white/70 transition ${open ? 'opacity-0' : ''}`} />
+            <span className={`h-0.5 w-5 rounded-full bg-white transition ${open ? '-translate-y-2 -rotate-45' : ''}`} />
           </div>
         </button>
       </div>
@@ -82,25 +101,26 @@ export function Navbar() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.22 }}
-            className="overflow-hidden border-t border-slate-100 md:hidden"
+            className="overflow-hidden border-t border-white/10 bg-[#0a45c4] lg:hidden"
           >
-            <div className="flex flex-col gap-1 px-4 py-3 bg-white">
+            <div className="flex flex-col gap-1 px-4 py-3">
               {links.map((l) => (
                 <NavLink
-                  key={l.to}
+                  key={l.label}
                   to={l.to}
+                  end={l.to === '/'}
                   onClick={() => setOpen(false)}
-                  className="rounded-xl px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                  className="rounded-xl px-3 py-2.5 text-sm font-semibold text-white/85 hover:bg-white/10 hover:text-white"
                 >
                   {l.label}
                 </NavLink>
               ))}
               <Link
-                to="/book"
+                to="/contact"
                 onClick={() => setOpen(false)}
-                className="mt-2 rounded-xl bg-accent px-3 py-3 text-center text-sm font-bold text-white"
+                className="mt-2 rounded-xl bg-white px-3 py-3 text-center text-sm font-bold text-[#0a45c4]"
               >
-                Book now
+                Become a Partner
               </Link>
             </div>
           </motion.div>

@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
+import { Logo } from './Logo.jsx'
 
 export function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-white">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-3">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-8 lg:grid-cols-3">
         <div>
-          <p className="font-display text-xl font-bold text-slate-900">carrioo</p>
-          <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-600">
-            Dispatch-grade logistics for growing cities — transparent fares, verified partners, live
-            tracking from booking to offload.
+          <Logo />
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-600">
+            Delivering trust, every mile. Book trucks & tempos in minutes, track live, and deliver
+            with confidence across the city.
           </p>
           <div className="mt-6 flex flex-wrap gap-2 text-xs">
             <span className="rounded-full border border-slate-200 px-3 py-1 text-slate-600">
@@ -78,9 +79,28 @@ export function Footer() {
           <p className="mt-3 text-[11px] text-slate-500">Demo form — connects to nothing.</p>
         </div>
       </div>
-      <div className="mx-auto flex max-w-6xl flex-col gap-3 border-t border-slate-100 px-4 py-8 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <span>© {new Date().getFullYear()} carrioo Technologies Pvt Ltd. Demo website.</span>
-        <span>Privacy · Terms · Insurance partners</span>
+      <div className="mx-auto flex max-w-7xl flex-col gap-3 border-t border-slate-100 px-4 py-8 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <span>© {new Date().getFullYear()} Carryoo Technologies Pvt Ltd. All rights reserved.</span>
+        <span>
+          <a
+            href="https://rudrajoshi072004-coder.github.io/Carryoo-privacy-policy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer transition-colors hover:text-blue-400"
+          >
+            Privacy
+          </a>
+          {' · '}
+          <a
+            href="https://rudrajoshi072004-coder.github.io/Carryoo-privacy-policy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer transition-colors hover:text-blue-400"
+          >
+            Terms
+          </a>
+          {' · Insurance partners'}
+        </span>
       </div>
     </footer>
   )
