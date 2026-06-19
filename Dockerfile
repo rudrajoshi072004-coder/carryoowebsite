@@ -4,10 +4,13 @@ FROM node:22-alpine AS build
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+# Use npm 11 — npm 10 resolves optional deps differently and breaks lockfile sync
+RUN npm install -g npm@11
 
-# Install all dependencies (including dev) required for Vite build
-RUN npm ci --include=dev
+COPY package.json package-lock.json .npmrc ./
+
+# npm install (not ci) is reliable across Linux/Windows optional native deps
+RUN npm install --include=dev --no-audit --no-fund
 
 COPY . .
 
@@ -17,7 +20,7 @@ FROM node:22-alpine AS production
 
 WORKDIR /app
 
-RUN npm install -g serve@14.2.4
+RUN npm install -g npm@11 serve@14.2.4
 
 COPY --from=build /app/dist ./dist
 
