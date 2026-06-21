@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout.jsx'
-import { StaticPageRedirect } from './components/StaticPageRedirect.jsx'
 import { Home } from './pages/Home.jsx'
 import { Booking } from './pages/Booking.jsx'
 import { AppShowcase } from './pages/AppShowcase.jsx'
@@ -12,8 +11,6 @@ import { Safety } from './pages/Safety.jsx'
 export default function App() {
   return (
     <Routes>
-      <Route path="/privacy-policy" element={<StaticPageRedirect to="/privacy-policy/" />} />
-      <Route path="/privacy-policy.html" element={<StaticPageRedirect to="/privacy-policy/" />} />
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/book" element={<Booking />} />

@@ -2,12 +2,7 @@
   "redirects": [
     {
       "source": "/privacy-policy",
-      "destination": "/privacy-policy/",
-      "type": 301
-    },
-    {
-      "source": "/privacy-policy.html",
-      "destination": "/privacy-policy/",
+      "destination": "/privacy-policy.html",
       "type": 301
     }
   ],
