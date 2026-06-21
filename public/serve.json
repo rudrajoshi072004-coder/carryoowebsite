@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy/",
+      "type": 301
+    },
+    {
+      "source": "/privacy-policy.html",
+      "destination": "/privacy-policy/",
+      "type": 301
+    }
+  ],
   "headers": [
     {
       "source": "/sitemap.xml",
