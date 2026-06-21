@@ -83,18 +83,14 @@ export function Footer() {
         <span>© {new Date().getFullYear()} Carryoo Technologies Pvt Ltd. All rights reserved.</span>
         <span>
           <a
-            href="https://rudrajoshi072004-coder.github.io/Carryoo-privacy-policy/"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/privacy-policy.html"
             className="cursor-pointer transition-colors hover:text-blue-400"
           >
             Privacy
           </a>
           {' · '}
           <a
-            href="https://rudrajoshi072004-coder.github.io/Carryoo-privacy-policy/"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/privacy-policy.html"
             className="cursor-pointer transition-colors hover:text-blue-400"
           >
             Terms
