@@ -7,10 +7,12 @@ import { About } from './pages/About.jsx'
 import { Contact } from './pages/Contact.jsx'
 import { Services } from './pages/Services.jsx'
 import { Safety } from './pages/Safety.jsx'
+import { PrivacyPolicy } from './pages/PrivacyPolicy.jsx'
 
 export default function App() {
   return (
     <Routes>
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/book" element={<Booking />} />
