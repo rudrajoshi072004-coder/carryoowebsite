@@ -1,13 +1,33 @@
-/**
- * Loads the static privacy-policy.html inside the SPA shell so /privacy-policy
- * works without server redirects (which caused ERR_TOO_MANY_REDIRECTS).
- */
+import { useEffect } from 'react'
+import policyHtml from '../content/privacy-policy.html?raw'
+
+function parsePolicyHtml(html) {
+  const styleMatch = html.match(/<style>([\s\S]*?)<\/style>/i)
+  const bodyMatch = html.match(/<body[^>]*>([\s\S]*)<\/body>/i)
+
+  return {
+    styles: (styleMatch?.[1] ?? '').replace(/^(\s*)body\s*\{/m, '$1.privacy-policy-page {'),
+    body: bodyMatch?.[1] ?? html,
+  }
+}
+
+const { styles, body } = parsePolicyHtml(policyHtml)
+
 export function PrivacyPolicy() {
+  useEffect(() => {
+    const previousTitle = document.title
+    document.title = 'Carryoo — Privacy Policy'
+    window.scrollTo(0, 0)
+
+    return () => {
+      document.title = previousTitle
+    }
+  }, [])
+
   return (
-    <iframe
-      src="/privacy-policy.html"
-      title="Carryoo — Privacy Policy"
-      className="block h-screen w-full border-0"
-    />
+    <div className="privacy-policy-page">
+      <style>{styles}</style>
+      <div dangerouslySetInnerHTML={{ __html: body }} />
+    </div>
   )
 }

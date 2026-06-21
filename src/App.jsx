@@ -13,6 +13,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/privacy-policy.html" element={<PrivacyPolicy />} />
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/book" element={<Booking />} />
